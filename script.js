@@ -22,7 +22,7 @@ function autoGrow() {
   }
   
   function sendSupportMessage() {
-    var supportMessage = "<div class='supportMessage'>Thanks for your message! Our support team will get back to you shortly.</div>";
+    var supportMessage = "<div class='supportMessage'>Thank you for contacting! Our support team will get back to you shortly.</div>";
     document.getElementById("chatlog").innerHTML += supportMessage;
     document.getElementById("userInput").style.height = "50px";
   }

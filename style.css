@@ -1,18 +1,19 @@
 body {
   margin: 0px;
-  font-family:'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
 }
-
+#topheader {
+  position: absolute;
+  top: 0px;
+  width: 422px;
+  background-color: #4caf50;
+  height: 50px;
+  border-radius: 5px;
+}
 h1 {
   color-scheme: black;
   font-size: larger;
   text-align: center;
-  margin-bottom: 0px;
-  margin-top: 0px;
-  background-color: #4caf50;
-  height: 30px;
-  padding: 16px;
-
 }
 #chatbox {
   margin-top: 0px;
@@ -20,6 +21,8 @@ h1 {
   padding: 10px;
   border-style: groove;
   border-radius: 5px;
+  position:absolute;
+  top: 50px;
 }
 #chatlog {
   height: 400px;
@@ -27,14 +30,13 @@ h1 {
   border: 1px solid black;
   border-style: groove;
   padding: 10px;
-  margin-bottom: 10px;
-  
+  top: 10px;
 }
 
 .input-wrapper {
   display: flex;
   align-items: center;
-  margin-left:0px;
+  margin-left: 0px;
   margin-right: 0px;
 }
 
@@ -44,7 +46,7 @@ h1 {
   margin-bottom: 10px;
   font-size: 16px;
   resize: none;
-  padding-right:0px;
+  padding-right: 0px;
   background: #f0ebeb;
 }
 
