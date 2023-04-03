@@ -22,30 +22,25 @@ function sendUserInput(event) {
 }
 
 function sendSupportMessage() {
-  let userInput = document
-    .getElementById("userInput")
-    .value.toLowerCase()
-    .trim();
-  let supportMessage = "";
+  var userInput = document.getElementById("userInput").value.toLowerCase().trim();
+  var supportMessage = "";
 
-  if (userInput.includes("hello") || userInput.includes("hi")) {
-    supportMessage =
-      "<div class='supportMessage'>Hello! How can we assist you today?</div>";
-  } else if (userInput.includes("location") || userInput.includes("located")) {
-    supportMessage =
-      "<div class='supportMessage'>We are located in Nairobi, Kenya.</div>";
-  } else if (
-    userInput=="services" ||
-    userInput==="what services do you offer"
-  ) {
-    supportMessage =
-      "<div class='supportMessage'>We offer web design, automation, web hosting, domain names, social media management, search engine optimization, and logo design.</div>";
-  } else if (userInput.includes("open") || userInput.includes("available")) {
-    supportMessage =
-      "<div class='supportMessage'>We are open from Monday to Friday, 8 AM to 4 PM.</div>";
-  } else {
-    supportMessage =
-      "<div class='supportMessage'>Thank you for contacting us! Our support team will get back to you shortly.</div>";
+  switch (true) {
+    case userInput.includes("hello") || userInput.includes("hi"):
+      supportMessage = "<div class='supportMessage'>Hello! How can we assist you today?</div>";
+      break;
+    case userInput.includes("location") || userInput.includes("located"):
+      supportMessage = "<div class='supportMessage'>We are located in Nairobi, Kenya.</div>";
+      break;
+    case userInput.includes("services") || userInput.includes("what do you offer"):
+      supportMessage = "<div class='supportMessage'>We offer web design, automation, web hosting, domain names, social media management, search engine optimization, and logo design.</div>";
+      break;
+    case userInput.includes("open") || userInput.includes("available"):
+      supportMessage = "<div class='supportMessage'>We are open from Monday to Friday, 8 AM to 4 PM.</div>";
+      break;
+    default:
+      supportMessage = "<div class='supportMessage'>Thanks for your message! Our support team will get back to you shortly.</div>";
+      break;
   }
 
   document.getElementById("chatlog").innerHTML += supportMessage;
