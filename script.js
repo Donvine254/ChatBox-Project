@@ -35,8 +35,8 @@ function sendSupportMessage() {
     supportMessage =
       "<div class='supportMessage'>We are located in Nairobi, Kenya.</div>";
   } else if (
-    userInput.includes("services") ||
-    userInput.includes("what services do you offer")
+    userInput=="services" ||
+    userInput==="what services do you offer"
   ) {
     supportMessage =
       "<div class='supportMessage'>We offer web design, automation, web hosting, domain names, social media management, search engine optimization, and logo design.</div>";
