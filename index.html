@@ -6,27 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="./script.js" defer></script>
     <title>ChatBox</title>
 </head>
 
 <body>
-    <div id="topheader">
-        <h1>Let's Chat? We are online 24/7</h1>
-    </div>
-    <div id="chatbox">
+    <section id="chatbox-container">
+        <div id="topheader">
+            <h1>Let's Chat? We are online 24/7<box-icon id="remove" color="white" name='x' ></box-icon></h1>
+      </div>
+      <div id="chatbox">
         <div id="chatlog"></div>
         <div class="input-wrapper">
-            <textarea id="userInput" placeholder="Type your message here..." maxlength="250" oninput="autoGrow()"
-                onKeyDown="if(event.keyCode==13) sendUserInput(event)">
-          </textarea>
-            <span class="material-symbols-outlined" id="sendbutton" onclick="sendUserInput()">
-                send
-            </span>
+          <input id="userInput" placeholder="Type your message here..." maxlength="250">
+          <box-icon id="chat" type='solid' name='send'></box-icon>
         </div>
-    </div>
+    </section>
+   
 </body>
 
 </html>
