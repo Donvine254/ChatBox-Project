@@ -32,8 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
       sendUserInput(event);
     }
   });
-  const chatBtn = document.getElementById("chat");
-  chatBtn.addEventListener("click", function () {
-    sendUserInput();
-  });
+  document.getElementById("chat").addEventListener("click",()=> 
+    sendUserInput()
+);
 });
