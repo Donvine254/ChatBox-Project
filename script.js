@@ -13,13 +13,14 @@ function sendUserInput(event) {
   document.getElementById("userInput").value = "";
   let userMessage = "<div class='userMessage'>" + userInput + "</div>";
   document.getElementById("chatlog").innerHTML += userMessage;
-  setTimeout(sendSupportMessage, 1000);
+  setTimeout(sendSupportMessage (userInput), 1000);
 }
 
-function sendSupportMessage() {
-  let userInput = document.getElementById("userInput");
+function sendSupportMessage(userInput) {
+  if(userInput.length === 0) {
+    return;
+  }
   let supportMessage = "";
-  console.log(userInput.value.toLowerCase().trim());
   supportMessage = "<div class='supportMessage'>Thanks for your message! Our support team will get back to you shortly.</div>";
   document.getElementById("chatlog").innerHTML += supportMessage;
   document.getElementById("userInput").style.height = "50px";
