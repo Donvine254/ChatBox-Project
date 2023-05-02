@@ -1,8 +1,3 @@
-function autoGrow() {
-  let element = document.getElementById("userInput");
-  element.style.height = "5px";
-  element.style.height = element.scrollHeight + "px";
-}
 
 function sendUserInput(event) {
   if (event) {
@@ -29,8 +24,6 @@ function sendSupportMessage() {
   document.getElementById("chatlog").innerHTML += supportMessage;
   document.getElementById("userInput").style.height = "50px";
   }
-
-  
 
 document.addEventListener("DOMContentLoaded", function () {
   let userInput = document.getElementById("userInput");
