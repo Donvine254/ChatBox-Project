@@ -1,3 +1,24 @@
+function getTime(){
+  let date = new Date();
+  let day = date.getDate();
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  if(hours<10 && minutes<10){
+    hours = "0" + hours;
+    minutes = "0" + minutes;
+  }
+  let time = hours + ":" + minutes;
+  return time;
+}
+
+function welcomeMessage(message){
+ let chatlog= document.getElementById("chatlog")
+ let chatStart=`<div class="start">Chat Started at ${getTime()}</div>`
+ let greetings='<div class="supportMessage">'+message+'</div>';
+ chatlog.innerHTML+=chatStart
+ chatlog.innerHTML+=greetings
+ }
+welcomeMessage("Hello, thank you for contacting Shella Trendy. How can we help you?");
 
 function sendUserInput(event) {
   if (event) {
@@ -11,7 +32,7 @@ function sendUserInput(event) {
   }
 
   document.getElementById("userInput").value = "";
-  let userMessage = "<div class='userMessage'>" + userInput + "</div>";
+  let userMessage = `<div class='userMessage'> ${userInput} <em>${getTime()}</em> </div>`;
   document.getElementById("chatlog").innerHTML += userMessage;
   setTimeout(sendSupportMessage (userInput), 1000);
 }
@@ -21,7 +42,7 @@ function sendSupportMessage(userInput) {
     return;
   }
   let supportMessage = "";
-  supportMessage = "<div class='supportMessage'>Thanks for your message! Our support team will get back to you shortly.</div>";
+  supportMessage = `<div class='supportMessage'>Thanks for your message! Our support team will get back to you shortly!<em> ${getTime()}</em></div>`;
   document.getElementById("chatlog").innerHTML += supportMessage;
   document.getElementById("userInput").style.height = "50px";
   }

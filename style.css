@@ -55,8 +55,10 @@ body {
 }
 
 h1 {
+  position: absolute;
   margin:10px;
   font-size: 22px;
+  left:25%
 }
 
 #remove {
@@ -86,7 +88,13 @@ h1 {
   overflow-x: hidden;
   padding: 8px 12px;
 }
-
+#chatlog .start{
+  position: relative;
+  left: 25%;
+  color:#3e8e41;
+  font-weight: bolder;
+ 
+}
 .input-wrapper {
   display: flex;
   justify-content: space-between;
@@ -137,7 +145,7 @@ h1 {
   color: white;
   padding: 8px 12px;
   margin: 5px 5px;
-  border-radius: 10px;
+  border-radius: 32px 0 32px 32px;
   float: right;
   clear: both;
   font-size: 18px;
@@ -152,7 +160,7 @@ h1 {
   color: black;
   padding: 8px 12px;
   margin: 5px 5px;
-  border-radius: 10px;
+  border-radius: 0 32px 32px 32px;
   font-size: 18px;
   float: left;
   clear: both;
