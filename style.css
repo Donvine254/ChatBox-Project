@@ -154,6 +154,12 @@ h1 {
   height: auto;
   margin-bottom: 10px;
 }
+.userMessage p{
+  float: right;
+  position: relative;
+  right:0;
+}
+
 
 .supportMessage {
   width: auto;
@@ -168,4 +174,9 @@ h1 {
   clear: both;
   text-align: left;
   margin-bottom: 10px;
+}
+.supportMessage p{
+  float: left;
+  position: relative;
+  left:0;
 }
