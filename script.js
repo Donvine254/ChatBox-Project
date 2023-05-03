@@ -3,16 +3,18 @@ function getTime(){
   let day = date.getDate();
   let hours = date.getHours();
   let minutes = date.getMinutes();
-  if(hours<10 && minutes<10){
+  if(hours<10){
     hours = "0" + hours;
+  }
+  if(minutes<10){
     minutes = "0" + minutes;
   }
   let time = hours + ":" + minutes;
   return time;
 }
+let chatlog= document.getElementById("chatlog")
 
 function welcomeMessage(message){
- let chatlog= document.getElementById("chatlog")
  let chatStart=`<div class="start">Chat Started at ${getTime()}</div>`
  let greetings='<div class="supportMessage">'+message+'</div>';
  chatlog.innerHTML+=chatStart
@@ -52,9 +54,11 @@ document.addEventListener("DOMContentLoaded", function () {
   userInput.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
       sendUserInput(event);
+      chatlog.scrollTop = chatlog.scrollHeight;
     }
   });
   document.getElementById("chat").addEventListener("click",()=> 
     sendUserInput()
 );
 });
+

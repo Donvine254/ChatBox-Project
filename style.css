@@ -82,7 +82,7 @@ h1 {
 
 #chatlog {
   max-height: auto;
-  overflow-y: auto;
+  overflow-y: scroll;
   margin-bottom: 10px;
   height: 80%;
   overflow-x: hidden;
@@ -93,6 +93,7 @@ h1 {
   left: 25%;
   color:#3e8e41;
   font-weight: bolder;
+  margin-bottom: 10px;
  
 }
 .input-wrapper {
@@ -151,6 +152,7 @@ h1 {
   font-size: 18px;
   text-align: left;
   height: auto;
+  margin-bottom: 10px;
 }
 
 .supportMessage {
@@ -165,4 +167,5 @@ h1 {
   float: left;
   clear: both;
   text-align: left;
+  margin-bottom: 10px;
 }
