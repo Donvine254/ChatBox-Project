@@ -13,23 +13,34 @@ function getTime() {
   return time;
 }
 let chatlog = document.getElementById("chatlog");
+//lets load the chat messages after initialization
 function updateChat() {
   let endMessage =
     '<div class="endChat"><p>Are you sure you want to end this conversation?</p><button id="end" onclick="closeChat()">Yes</button><button id="cancel" onclick="continueChat()">No</button></div>';
   chatlog.innerHTML += endMessage;
   chatlog.scrollTop = chatlog.scrollHeight;
 }
-const closeChatbtn = document.getElementById("remove");
-closeChatbtn.addEventListener("click", updateChat);
+//function to close the chat
+document.getElementById("remove").addEventListener("click", () => {
+  const endMessage = document.getElementsByClassName("endChat")[0];
+  if (endMessage) {
+    chatBoxContainer.classList.add("chatBoxHidden");
+    chatButtonContainer.appendChild(startChatBtn);
+  }
+  updateChat();
+});
+//function to close the chat
 function closeChat() {
   window.close();
 }
+//function to continue the chat if user clicks on the cancel button
 function continueChat() {
   const endMessage = document.getElementsByClassName("endChat")[0];
   if (endMessage) {
     endMessage.remove();
   }
 }
+//function to start the chat with a welcome message
 function welcomeMessage(message) {
   let chatStart = `<div class="start">Chat Started at ${getTime()}</div>`;
   let greetings = '<div class="supportMessage">' + message + "</div>";
@@ -39,7 +50,7 @@ function welcomeMessage(message) {
 welcomeMessage(
   "Hello, thank you for contacting Shella Trendy. How can we help you? &#128512"
 );
-
+//function to update the chat log with the current user message
 function sendUserInput(event) {
   if (event) {
     event.preventDefault();
@@ -56,7 +67,7 @@ function sendUserInput(event) {
   document.getElementById("chatlog").innerHTML += userMessage;
   sendSupportMessage(userInput);
 }
-
+//function to send response to the user input
 function sendSupportMessage(userInput) {
   if (userInput.length === 0) {
     return;
@@ -81,6 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .getElementById("chat")
     .addEventListener("click", () => sendUserInput());
 });
+//function to get response for the user input based on the input value.
 function getResponse(userInput) {
   userInput = userInput.toLowerCase();
   if (userInput.length === 0) {
@@ -140,10 +152,7 @@ function getResponse(userInput) {
     userInput.includes("what is your origin")
   ) {
     return "I guess you could say I'm from the internet!";
-  } else if (
-    userInput.includes("help") ||
-    userInput.includes("advice")
-  ) {
+  } else if (userInput.includes("help") || userInput.includes("advice")) {
     return "Sure, I'll do my best to help! What do you need assistance with?";
   } else if (
     userInput.includes("what's the meaning of life") ||
@@ -160,16 +169,14 @@ function getResponse(userInput) {
     userInput.includes("music")
   ) {
     return "I like all sorts of genres but countrymusic is my most favorite!";
+  } else if (userInput.includes("fun fact") || userInput.includes("trivia")) {
+    return printFunFact()
   } else if (
-    userInput.includes("fun fact") ||
-    userInput.includes("trivia")
+    userInput.includes("can you tell me a fun fact") ||
+    userInput.includes("give me some trivia")
   ) {
     return "Did you know that the shortest war in history was between Britain and Zanzibar in 1896? It lasted only 38 minutes!";
-  } 
-  else if (userInput.includes("can you tell me a fun fact") || userInput.includes("give me some trivia")) {
-    return "Did you know that the shortest war in history was between Britain and Zanzibar in 1896? It lasted only 38 minutes!";
-    } 
-  else if (
+  } else if (
     userInput.includes("what is your favorite book") ||
     userInput.includes("do you like reading")
   ) {
@@ -226,9 +233,21 @@ function getResponse(userInput) {
 //i am trying to give random jokes and fun facts to users
 
 async function getFunFact() {
-  const response = await fetch("https://uselessfacts.jsph.pl/random.json?language=en");
+  const response = await fetch(
+    "https://uselessfacts.jsph.pl/random.json?language=en"
+  );
   const data = await response.json();
   const funFact = data.text.trim();
   return funFact;
 }
 
+async function printFunFact() {
+  const funFact = await getFunFact();
+  say(funFact);
+}
+let funFact;
+printFunFact();
+function say(message) {
+  funFact = structuredClone(message);
+  return funFact;
+}

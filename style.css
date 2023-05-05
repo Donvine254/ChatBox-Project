@@ -232,11 +232,39 @@ h1 {
   }
   
   #chatlog {
-    height: calc(100% - 140px);
+    height:90%;
+    margin-bottom: 0;
+
   }
-  
+  .input-wrapper{
+    margin-top: 0px !important;
+    max-height: 15%;
+  }
   #userInput {
     max-width: 90%;
     max-height:80px;
   }
 }
+@media screen and (min-width: 760px) and (max-width: 1000px) {
+  /* styles for devices with screen width between 760px and 1000px */
+  #chatbox-container {
+    top:50%;
+    left:50%;
+    transform: translateX(-50%) translateY(-50%);
+    height: 80%;
+    width: 80%;
+  }
+  #chatlog {
+    height: 90%;
+    margin-bottom: 0px !important;
+  }
+  #chatbox{
+    height: 90%;
+  }
+  .input-wrapper{
+    margin-top: 0px !important;
+    max-height: 20%;
+  }
+
+}
+
