@@ -17,6 +17,11 @@ body {
   border-radius: 10px;
   z-index: 1;
 }
+#chatlog div {
+  margin-bottom: 5px;
+  padding: 10px;
+  justify-items: stretch;
+}
 
 #remove:hover {
   transform: scale(1.1);
