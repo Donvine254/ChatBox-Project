@@ -127,13 +127,7 @@ function updateChat() {
 const closeChatbtn = document.getElementById("remove");
 closeChatbtn.addEventListener("click", updateChat)
 function closeChat() {
-  chatBoxContainer.classList.add("chatBoxHidden");
-  chatlog.innerHTML = "";
-  const endMessage = document.getElementsByClassName("endChat")[0];
-  if (endMessage) {
-    endMessage.remove();
-  }
-  chatButtonContainer.appendChild(startChatBtn);
+ window.close()
 }
 function continueChat() {
   const endMessage = document.getElementsByClassName("endChat")[0];
