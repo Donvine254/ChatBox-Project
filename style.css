@@ -165,3 +165,44 @@ h1 {
   position: relative;
   left:0;
 }
+.edChat{
+  max-width: 75%;
+  display:flex;
+  padding:0;;
+}
+.endChat p {
+  position: relative;
+  float: center;
+  color: #3e8e41;
+  padding: 0px;
+  max-width: 75%;
+  clear:both;
+  left:20%;
+}
+.endChat #end{
+  border-radius: 5px;
+  height:40px;
+  background-color: #363535;
+  padding:0 5%;
+  margin:10px;
+  color: white;
+  float:left;
+  left:0;
+}
+.endChat #end:hover{
+  background-color: red;
+}
+.endChat #cancel{
+  border-radius: 5px;
+  height:40px;
+  background-color: #088178;
+  padding:0 5%;
+  margin:10px;
+  color: white;
+  float:right;
+  right:0;
+  z-index: 999;
+}
+.endchat #cancel:hover{
+  background-color: #0d2e74;
+}
