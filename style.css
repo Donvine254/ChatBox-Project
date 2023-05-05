@@ -6,6 +6,7 @@ body {
   background: #ccd6cd;
 }
 #chatbox-container {
+  top:20px;
   left: 0;
   bottom: 20px;
   margin: 20px;
@@ -107,7 +108,7 @@ h1 {
   padding: 2;
   border: 1px solid #ccc;
   border-radius: 5px;
-  height: 60px;
+  height: 50px;
   outline: none;
   margin: 5px;
   bottom: 2px;
