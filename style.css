@@ -66,7 +66,7 @@ h1 {
 #chatbox {
   background-color: #fff;
   border-radius: 0 0 5px 5px;
-  height: 85%;
+  height: 90%;
   margin: 2px 0 0 2px;
   position: absolute;
   width: 99%;
@@ -76,7 +76,7 @@ h1 {
   max-height: auto;
   overflow-y: scroll;
   margin-bottom: 10px;
-  height: 80%;
+  height: 85%;
   overflow-x: hidden;
   padding: 8px 12px;
 }
