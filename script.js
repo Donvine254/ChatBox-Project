@@ -13,7 +13,23 @@ function getTime() {
   return time;
 }
 let chatlog = document.getElementById("chatlog");
-
+function updateChat() {
+  let endMessage =
+    '<div class="endChat"><p>Are you sure you want to end this conversation?</p><button id="end" onclick="closeChat()">Yes</button><button id="cancel" onclick="continueChat()">No</button></div>';
+  chatlog.innerHTML += endMessage;
+  chatlog.scrollTop = chatlog.scrollHeight;
+}
+const closeChatbtn = document.getElementById("remove");
+closeChatbtn.addEventListener("click", updateChat);
+function closeChat() {
+  window.close();
+}
+function continueChat() {
+  const endMessage = document.getElementsByClassName("endChat")[0];
+  if (endMessage) {
+    endMessage.remove();
+  }
+}
 function welcomeMessage(message) {
   let chatStart = `<div class="start">Chat Started at ${getTime()}</div>`;
   let greetings = '<div class="supportMessage">' + message + "</div>";
@@ -38,7 +54,7 @@ function sendUserInput(event) {
   document.getElementById("userInput").value = "";
   let userMessage = `<div class='userMessage'> <p>&nbsp;&nbsp${getTime()}</p> ${userInput}</div>`;
   document.getElementById("chatlog").innerHTML += userMessage;
-  setTimeout(sendSupportMessage(userInput), 1000);
+  sendSupportMessage(userInput);
 }
 
 function sendSupportMessage(userInput) {
@@ -78,15 +94,101 @@ function getResponse(userInput) {
   } else if (userInput.includes("goodbye") || userInput.includes("bye")) {
     return "Goodbye, thank you for contacting Shella Trendy &#128525";
   } else if (
-    userInput == "how are you" ||
-    userInput == "how are you doing" ||
-    userInput == "how is the going"
+    userInput.includes("how are you") ||
+    userInput.includes("how are you doing") ||
+    userInput.includes("how is the going")
   ) {
-    return "I am doing fine, how about you?";
+    return "I am doing great, thanks for asking.";
   } else if (userInput.includes("bored")) {
     return "I am bored too, maybe we can do something";
   } else if (userInput.includes("name")) {
-    return "My name is Don, what is your name?";
+    return "My name is Don, do you like it?";
+  } else if (userInput.includes("whats up") || userInput.includes("sup")) {
+    return "Not much, just chatting with you! How about you?";
+  } else if (
+    userInput.includes("joke") ||
+    userInput.includes("make me laugh")
+  ) {
+    return "Why did the tomato turn red? Because it saw the salad dressing!";
+  } else if (
+    userInput.includes("what do you like to do") ||
+    userInput.includes("hobbies")
+  ) {
+    return "I love chatting with people and learning new things!";
+  } else if (
+    userInput.includes("do you have any pets") ||
+    userInput.includes("do you like animals")
+  ) {
+    return "I don't have any pets, but I love dogs!";
+  } else if (
+    userInput.includes("favorite food") ||
+    userInput.includes("what do you like to eat")
+  ) {
+    return "Have you tried stir fried chicken? It slaps!";
+  } else if (
+    userInput.includes("favorite movie") ||
+    userInput.includes("what do you like to watch")
+  ) {
+    return "I don't watch movies, but I've heard that The Matrix is pretty cool!";
+  } else if (
+    userInput.includes("what is the weather like today") ||
+    userInput.includes("is it raining outside")
+  ) {
+    return "It may rain it may snow, who knows";
+  } else if (
+    userInput.includes("where are you from") ||
+    userInput.includes("what is your origin")
+  ) {
+    return "I guess you could say I'm from the internet!";
+  } else if (
+    userInput.includes("help") ||
+    userInput.includes("advice")
+  ) {
+    return "Sure, I'll do my best to help! What do you need assistance with?";
+  } else if (
+    userInput.includes("what's the meaning of life") ||
+    userInput.includes("why are we here")
+  ) {
+    return "That's a deep question that humans have been pondering for centuries. What do you think the meaning of life is?";
+  } else if (
+    userInput.includes("favorite celebrity") ||
+    userInput.includes("famous people")
+  ) {
+    return "I don't have a favorite celebrity, but I think it's cool when people use their platform for good!";
+  } else if (
+    userInput.includes("favorite song") ||
+    userInput.includes("music")
+  ) {
+    return "I like all sorts of genres but countrymusic is my most favorite!";
+  } else if (
+    userInput.includes("fun fact") ||
+    userInput.includes("trivia")
+  ) {
+    return "Did you know that the shortest war in history was between Britain and Zanzibar in 1896? It lasted only 38 minutes!";
+  } 
+  else if (userInput.includes("can you tell me a fun fact") || userInput.includes("give me some trivia")) {
+    return "Did you know that the shortest war in history was between Britain and Zanzibar in 1896? It lasted only 38 minutes!";
+    } 
+  else if (
+    userInput.includes("what is your favorite book") ||
+    userInput.includes("do you like reading")
+  ) {
+    return "This is tough to say, but I like reading novels";
+  } else if (
+    userInput.includes("what is your favorite season") ||
+    userInput.includes("do you like summer or winter")
+  ) {
+    return "I don't really have a preference, but I've heard that people enjoy different things about each season!";
+  } else if (
+    userInput.includes("do you believe in ghosts") ||
+    userInput.includes("have you ever seen a ghost")
+  ) {
+    return "Shh! there might be a ghost in here";
+  } else if (
+    userInput.includes("what's your favorite sport") ||
+    userInput.includes("do you like playing games")
+  ) {
+    return "I like biking and going for hikes!";
   } else if (userInput.includes("email")) {
     return "You can send me an email at shellatrendy@gmail.com";
   } else if (userInput.includes("buy") && userInput.includes("deliver")) {
@@ -112,27 +214,21 @@ function getResponse(userInput) {
     return "we are located at 123 Kimathi Street Nairobi";
   } else if (userInput.includes("thanks") || userInput.includes("thank you")) {
     return "Welcome, Always a pleasure to talk with you &#128151";
-  } else if (userInput.includes("end chat")) {
-    return "As you wish sire!";
+  } else if (
+    userInput.includes("what is your favorite movie") ||
+    userInput.includes("do you like watching movies")
+  ) {
+    return "Avengers Infinity War is a gem to me";
   } else {
     return "Sorry, I don't understand. Please try something else.";
   }
 }
-function updateChat() {
-  let endMessage =
-    '<div class="endChat"><p>Are you sure you want to end this conversation?</p><button id="end" onclick="closeChat()">Yes</button><button id="cancel" onclick="continueChat()">No</button></div>';
-  chatlog.innerHTML += endMessage;
-  chatlog.scrollTop = chatlog.scrollHeight;
-}
-const closeChatbtn = document.getElementById("remove");
-closeChatbtn.addEventListener("click", updateChat)
-function closeChat() {
- window.close()
-}
-function continueChat() {
-  const endMessage = document.getElementsByClassName("endChat")[0];
-  if (endMessage) {
-    endMessage.remove();
-  }
+//i am trying to give random jokes and fun facts to users
+
+async function getFunFact() {
+  const response = await fetch("https://uselessfacts.jsph.pl/random.json?language=en");
+  const data = await response.json();
+  const funFact = data.text.trim();
+  return funFact;
 }
 
