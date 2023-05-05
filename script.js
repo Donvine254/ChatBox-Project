@@ -36,7 +36,7 @@ function sendUserInput(event) {
   }
 
   document.getElementById("userInput").value = "";
-  let userMessage = `<div class='userMessage'> <p>${getTime()}</p> ${userInput}</div>`;
+  let userMessage = `<div class='userMessage'> <p>&nbsp;&nbsp${getTime()}</p> ${userInput}</div>`;
   document.getElementById("chatlog").innerHTML += userMessage;
   setTimeout(sendSupportMessage(userInput), 1000);
 }
@@ -69,7 +69,11 @@ function getResponse(userInput) {
   userInput = userInput.toLowerCase();
   if (userInput.length === 0) {
     return;
-  } else if (userInput.includes("hello") || userInput.includes("hi")) {
+  } else if (
+    userInput.includes("hello") ||
+    userInput.includes("hi") ||
+    userInput.includes("hey")
+  ) {
     return "Hello, how are you?";
   } else if (userInput.includes("goodbye") || userInput.includes("bye")) {
     return "Goodbye, thank you for contacting Shella Trendy &#128525";
@@ -79,37 +83,62 @@ function getResponse(userInput) {
     userInput == "how is the going"
   ) {
     return "I am doing fine, how about you?";
+  } else if (userInput.includes("bored")) {
+    return "I am bored too, maybe we can do something";
   } else if (userInput.includes("name")) {
     return "My name is Don, what is your name?";
+  } else if (userInput.includes("email")) {
+    return "You can send me an email at shellatrendy@gmail.com";
+  } else if (userInput.includes("buy") && userInput.includes("deliver")) {
+    return "You can place the order on shellatrendy.com and have it delivered to your location";
   } else if (
-    userInput == "what is your favorite color" ||
-    userInput == "what is your favorite color?"
-  ) {
-    return "My favorite color is blue";
-  } else if (
-    userInput == "what is your location" ||
-    userInput == "where are you located"
-  ) {
-    return "We are located at 123 Kimathi Street Nairobi?";
-  } else if (
-    userInput == "what products do you sell" ||
-    userInput == "what products are available" ||
-    userInput == "what can i buy"
+    userInput.includes("product") ||
+    userInput.includes("products") ||
+    userInput.includes("sell") ||
+    userInput.includes("selling") ||
+    userInput.includes("sells") ||
+    userInput.includes("buy")
   ) {
     return "we deal in clothes, bags and shoes";
+  } else if (userInput.includes("delivery") || userInput.includes("deliver")) {
+    return "We deliver countrywide. Delivery is free within Nairobi";
   } else if (
-    userInput == "what time do you close" ||
-    userInput == "what time do you open?" ||
-    userInput == "are you open"
+    userInput.includes("time") ||
+    userInput.includes("open") ||
+    userInput.includes("close")
   ) {
     return "we are open at 7am and close at 6pm from monday to saturday. You can also shop online any time";
   } else if (userInput.includes("location") || userInput.includes("located")) {
     return "we are located at 123 Kimathi Street Nairobi";
-  } 
-  else if (userInput.includes("thanks")||userInput.includes("thank you")) {
+  } else if (userInput.includes("thanks") || userInput.includes("thank you")) {
     return "Welcome, Always a pleasure to talk with you &#128151";
-  }
-  else {
+  } else if (userInput.includes("end chat")) {
+    return "As you wish sire!";
+  } else {
     return "Sorry, I don't understand. Please try something else.";
   }
 }
+function updateChat() {
+  let endMessage =
+    '<div class="endChat"><p>Are you sure you want to end this conversation?</p><button id="end" onclick="closeChat()">Yes</button><button id="cancel" onclick="continueChat()">No</button></div>';
+  chatlog.innerHTML += endMessage;
+  chatlog.scrollTop = chatlog.scrollHeight;
+}
+const closeChatbtn = document.getElementById("remove");
+closeChatbtn.addEventListener("click", updateChat)
+function closeChat() {
+  chatBoxContainer.classList.add("chatBoxHidden");
+  chatlog.innerHTML = "";
+  const endMessage = document.getElementsByClassName("endChat")[0];
+  if (endMessage) {
+    endMessage.remove();
+  }
+  chatButtonContainer.appendChild(startChatBtn);
+}
+function continueChat() {
+  const endMessage = document.getElementsByClassName("endChat")[0];
+  if (endMessage) {
+    endMessage.remove();
+  }
+}
+
