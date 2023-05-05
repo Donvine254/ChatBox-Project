@@ -239,9 +239,4 @@ h1 {
     max-width: 90%;
     max-height:80px;
   }
-  chat{
-    height: calc(100% - 80px);
-    width: 100%;
-  
-  }
 }
