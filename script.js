@@ -92,162 +92,98 @@ document.addEventListener("DOMContentLoaded", function () {
     .getElementById("chat")
     .addEventListener("click", () => sendUserInput());
 });
-//function to get response for the user input based on the input value.
 function getResponse(userInput) {
   userInput = userInput.toLowerCase();
   if (userInput.length === 0) {
     return;
-  } else if (
-    userInput.includes("hello") ||
-    userInput.includes("hi") ||
-    userInput.includes("hey")
-  ) {
-    return "Hello, how are you?";
-  } else if (userInput.includes("goodbye") || userInput.includes("bye")) {
-    return "Goodbye, thank you for contacting Shella Trendy &#128525";
-  } else if (
-    userInput.includes("how are you") ||
-    userInput.includes("how are you doing") ||
-    userInput.includes("how is the going")
-  ) {
-    return "I am doing great, thanks for asking.";
-  } else if (userInput.includes("bored")) {
-    return "I am bored too, maybe we can do something";
-  } else if (userInput.includes("name")) {
-    return "My name is Don, do you like it?";
-  } else if (userInput.includes("whats up") || userInput.includes("sup")) {
-    return "Not much, just chatting with you! How about you?";
-  } else if (
-    userInput.includes("joke") ||
-    userInput.includes("make me laugh")
-  ) {
-    return "Why did the tomato turn red? Because it saw the salad dressing!";
-  } else if (
-    userInput.includes("what do you like to do") ||
-    userInput.includes("hobbies")
-  ) {
-    return "I love chatting with people and learning new things!";
-  } else if (
-    userInput.includes("do you have any pets") ||
-    userInput.includes("do you like animals")
-  ) {
-    return "I don't have any pets, but I love dogs!";
-  } else if (
-    userInput.includes("favorite food") ||
-    userInput.includes("what do you like to eat")
-  ) {
-    return "Have you tried stir fried chicken? It slaps!";
-  } else if (
-    userInput.includes("favorite movie") ||
-    userInput.includes("what do you like to watch")
-  ) {
-    return "I don't watch movies, but I've heard that The Matrix is pretty cool!";
-  } else if (
-    userInput.includes("what is the weather like today") ||
-    userInput.includes("is it raining outside")
-  ) {
-    return "It may rain it may snow, who knows";
-  } else if (
-    userInput.includes("where are you from") ||
-    userInput.includes("what is your origin")
-  ) {
-    return "I guess you could say I'm from the internet!";
-  } else if (userInput.includes("help") || userInput.includes("advice")) {
-    return "Sure, I'll do my best to help! What do you need assistance with?";
-  } else if (
-    userInput.includes("what's the meaning of life") ||
-    userInput.includes("why are we here")
-  ) {
-    return "That's a deep question that humans have been pondering for centuries. What do you think the meaning of life is?";
-  } else if (
-    userInput.includes("favorite celebrity") ||
-    userInput.includes("famous people")
-  ) {
-    return "I don't have a favorite celebrity, but I think it's cool when people use their platform for good!";
-  } else if (
-    userInput.includes("favorite song") ||
-    userInput.includes("music")
-  ) {
-    return "I like all sorts of genres but countrymusic is my most favorite!";
-  } else if (userInput.includes("fun fact") || userInput.includes("trivia")) {
-    return printFunFact()
-  } else if (
-    userInput.includes("can you tell me a fun fact") ||
-    userInput.includes("give me some trivia")
-  ) {
-    return "Did you know that the shortest war in history was between Britain and Zanzibar in 1896? It lasted only 38 minutes!";
-  } else if (
-    userInput.includes("what is your favorite book") ||
-    userInput.includes("do you like reading")
-  ) {
-    return "This is tough to say, but I like reading novels";
-  } else if (
-    userInput.includes("what is your favorite season") ||
-    userInput.includes("do you like summer or winter")
-  ) {
-    return "I don't really have a preference, but I've heard that people enjoy different things about each season!";
-  } else if (
-    userInput.includes("do you believe in ghosts") ||
-    userInput.includes("have you ever seen a ghost")
-  ) {
-    return "Shh! there might be a ghost in here";
-  } else if (
-    userInput.includes("what's your favorite sport") ||
-    userInput.includes("do you like playing games")
-  ) {
-    return "I like biking and going for hikes!";
-  } else if (userInput.includes("email")) {
-    return "You can send me an email at shellatrendy@gmail.com";
-  } else if (userInput.includes("buy") && userInput.includes("deliver")) {
-    return "You can place the order on shellatrendy.com and have it delivered to your location";
-  } else if (
-    userInput.includes("product") ||
-    userInput.includes("products") ||
-    userInput.includes("sell") ||
-    userInput.includes("selling") ||
-    userInput.includes("sells") ||
-    userInput.includes("buy")
-  ) {
-    return "we deal in clothes, bags and shoes";
-  } else if (userInput.includes("delivery") || userInput.includes("deliver")) {
-    return "We deliver countrywide. Delivery is free within Nairobi";
-  } else if (
-    userInput.includes("time") ||
-    userInput.includes("open") ||
-    userInput.includes("close")
-  ) {
-    return "we are open at 7am and close at 6pm from monday to saturday. You can also shop online any time";
-  } else if (userInput.includes("location") || userInput.includes("located")) {
-    return "we are located at 123 Kimathi Street Nairobi";
-  } else if (userInput.includes("thanks") || userInput.includes("thank you")) {
-    return "Welcome, Always a pleasure to talk with you &#128151";
-  } else if (
-    userInput.includes("what is your favorite movie") ||
-    userInput.includes("do you like watching movies")
-  ) {
-    return "Avengers Infinity War is a gem to me";
-  } else {
-    return "Sorry, I don't understand. Please try something else.";
   }
+  for (const [key, value] of Object.entries(responses)) {
+    if (userInput.includes(key)) {
+      return value;
+    }
+  }
+  return "Sorry, I didn't understand what you said.";
 }
-//i am trying to give random jokes and fun facts to users
-
-async function getFunFact() {
-  const response = await fetch(
-    "https://uselessfacts.jsph.pl/random.json?language=en"
-  );
-  const data = await response.json();
-  const funFact = data.text.trim();
-  return funFact;
-}
-
-async function printFunFact() {
-  const funFact = await getFunFact();
-  say(funFact);
-}
-let funFact;
-printFunFact();
-function say(message) {
-  funFact = structuredClone(message);
-  return funFact;
-}
+//provide response data as an object
+let responses = {
+  hello: "Hello, how are you?",
+  hi: "Hello, how are you?",
+  hey: "Hello, how are you?",
+  goodbye: "Goodbye, thank you for contacting Shella Trendy &#128525",
+  bye: "Goodbye, thank you for contacting Shella Trendy &#128525",
+  "how are you": "I am doing great, thanks for asking.",
+  "how are you doing": "I am doing great, thanks for asking.",
+  "how is the going": "I am doing great, thanks for asking.",
+  bored: "I am bored too, maybe we can do something",
+  name: "My name is Don, do you like it?",
+  "whats up": "Not much, just chatting with you! How about you?",
+  sup: "Not much, just chatting with you! How about you?",
+  joke: "Why did the tomato turn red? Because it saw the salad dressing!",
+  "make me laugh":
+    "Why did the tomato turn red? Because it saw the salad dressing!",
+  "what do you like to do":
+    "I love chatting with people and learning new things!",
+  hobbies: "I love chatting with people and learning new things!",
+  "do you have any pets": "I don't have any pets, but I love dogs!",
+  "do you like animals": "I don't have any pets, but I love dogs!",
+  "favorite food": "Have you tried stir fried chicken? It slaps!",
+  "what do you like to eat": "Have you tried stir fried chicken? It slaps!",
+  "favorite movie":
+    "I don't watch movies, but I've heard that The Matrix is pretty cool!",
+  "what do you like to watch":
+    "I don't watch movies, but I've heard that The Matrix is pretty cool!",
+  "what is the weather like today": "It may rain it may snow, who knows",
+  "is it raining outside": "It may rain it may snow, who knows",
+  "where are you from": "I guess you could say I'm from the internet!",
+  "what is your origin": "I guess you could say I'm from the internet!",
+  help: "Sure, I'll do my best to help! What do you need assistance with?",
+  advice: "Sure, I'll do my best to help! What do you need assistance with?",
+  "what's the meaning of life":
+    "That's a deep question that humans have been pondering for centuries. What do you think the meaning of life is?",
+  "why are we here":
+    "That's a deep question that humans have been pondering for centuries. What do you think the meaning of life is?",
+  "favorite celebrity":
+    "I don't have a favorite celebrity, but I think it's cool when people use their platform for good!",
+  "famous people":
+    "I don't have a favorite celebrity, but I think it's cool when people use their platform for good!",
+  "favorite song":
+    "I like all sorts of genres but country music is my most favorite!",
+  music: "I like all sorts of genres but country music is my most favorite!",
+  "fun fact":
+    "Did you know that the shortest war in history was between Britain and Zanzibar in 1896? It lasted only 38 minutes!",
+  trivia:
+    "Did you know that the shortest war in history was between Britain and Zanzibar in 1896? It lasted only 38 minutes!",
+  "what is your favorite book":
+    "This is tough to say, but I like reading novels",
+  "do you like reading": "This is tough to say, but I like reading novels",
+  "what is your favorite season":
+    "I don't really have a preference, but I've heard that people enjoy different things about each season!",
+  "do you like summer or winter":
+    "I don't really have a preference, but I've heard that people enjoy different things about each season!",
+  "do you believe in ghosts": "Shh! there might be a ghost in here",
+  "have you ever seen a ghost": "Shh! there might be a ghost in here",
+  "what's your favorite sport": "I like biking and going for hikes!",
+  "do you like playing games": "I like biking and going for hikes!",
+  email: "You can send me an email at shellatrendy@gmail.com",
+  "buy and deliver":
+    "You can place the order on shellatrendy.com and have it delivered to your location",
+  product: "we deal in clothes, bags and shoes",
+  products: "we deal in clothes, bags and shoes",
+  sell: "we deal in clothes, bags and shoes",
+  selling: "we deal in clothes, bags and shoes",
+  sells: "we deal in clothes, bags and shoes",
+  buy: "we deal in clothes, bags and shoes",
+  delivery: "We deliver countrywide. Delivery is free within Nairobi",
+  deliver: "We deliver countrywide. Delivery is free within Nairobi",
+  time: "we are open at 7am and close at 6pm from monday to saturday. You can also shop online any time",
+  open: "we are open at 7am and close at 6pm from monday to saturday. You can also shop online any time",
+  close:
+    "we are open at 7am and close at 6pm from monday to saturday. You can also shop online any time",
+  location: "we are located at 123 Kimathi Street Nairobi",
+  located: "we are located at 123 Kimathi Street Nairobi",
+  thanks: "Welcome, Always a pleasure to talk with you &#128151",
+  "thank you": "Welcome, Always a pleasure to talk with you &#128151",
+  "what is your favorite movie": "Avengers Infinity War is a gem to me",
+  "do you like watching movies": "Avengers Infinity War is a gem to me",
+  default: "Sorry, I don't understand. Please try something else.",
+};
