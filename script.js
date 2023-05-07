@@ -66,6 +66,7 @@ function sendUserInput(event) {
   let userMessage = `<div class='userMessage'> <p>&nbsp;&nbsp${getTime()}</p> ${userInput}</div>`;
   document.getElementById("chatlog").innerHTML += userMessage;
   sendSupportMessage(userInput);
+chatlog.scrollTop = chatlog.scrollHeight;
 }
 //function to send response to the user input
 function sendSupportMessage(userInput) {
